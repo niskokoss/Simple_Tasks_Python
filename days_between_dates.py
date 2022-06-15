@@ -1,17 +1,17 @@
 import datetime
 
 
-def days_between_dates():
-    the_date1 = input()
+def how_many_days_to(x, date: str = ''):
     try:
-        the_date1 = the_date1.split(".")
-        days_the_date1 = datetime.date(int(the_date1[0]), int(the_date1[1]), int(the_date1[2]))
+        days_the_date1 = datetime.datetime.strptime(x, '%y.%m.%d')
         if days_the_date1 > datetime.date.today():
             days_between = days_the_date1 - datetime.date.today()
-            return print(days_between)
+            return days_between
         else:
             raise ValueError('Дата в прошлом')
     except:
         raise ValueError('Введите дату')
 
-days_between_dates()
+
+if __name__ == "__main__":
+    how_many_days_to(input())
